@@ -21,7 +21,7 @@ namespace CalcUL.BinaryOperations
                 case "Multiplication":
                     return new Multiplicater();
                 default: 
-                    throw new ArgumentException();
+                    throw new ArgumentException("Unknow argyment", "name");
             }
         }
     }
