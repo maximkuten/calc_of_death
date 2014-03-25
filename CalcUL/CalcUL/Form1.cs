@@ -25,54 +25,32 @@ namespace CalcUL
 
         private void subtraction_Click(object sender, EventArgs e)
         {
-            double firstArg;
-            double.TryParse(First.Text, out firstArg);
-            double twoArg;
-            double.TryParse(Second.Text, out twoArg);
-            Substracter substracter = new Substracter();
-
-            Result.Text = substracter.Calc(firstArg, twoArg);
+            Hotdog("Substraction");
         }
 
         private void addition_Click(object sender, EventArgs e)
         {
-            double firstArg;
-            double.TryParse(First.Text, out firstArg);
-            double twoArg;
-            double.TryParse(Second.Text, out twoArg);
-
-            Adder adder = new Adder();
-
-            Result.Text = adder.Calc(firstArg, twoArg);
-
+            Hotdog("Addition");
         }
 
         private void division_Click(object sender, EventArgs e)
         {
-            double firstArg;
-            double.TryParse(First.Text, out firstArg);
-            double twoArg;
-            double.TryParse(Second.Text, out twoArg);
-
-            Divider divider = new Divider();
-            if(twoArg !=0 )
-                Result.Text = divider.Calc(firstArg, twoArg);
-            else
-            {
-                Result.Text = "Ноуп";
-            }
+           Hotdog("Division");
         }
 
         private void multiplication_Click(object sender, EventArgs e)
+        {
+            Hotdog("Multiplication");
+        }
+
+        private void Hotdog(string name)
         {
             double firstArg;
             double.TryParse(First.Text, out firstArg);
             double twoArg;
             double.TryParse(Second.Text, out twoArg);
-
-            Multiplicater muliplicater = new Multiplicater();
-
-            Result.Text = muliplicater.Calc(firstArg, twoArg);
+            IBinaryOperation multi = BinaryOperationsFactory.CreateOperation(name);
+            Result.Text = multi.Calc(firstArg, twoArg);
         }
     }
 }
